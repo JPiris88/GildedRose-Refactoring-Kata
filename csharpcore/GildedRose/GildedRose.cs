@@ -7,6 +7,11 @@ namespace GildedRoseKata
         private const string AGED_BRIE = "Aged Brie";
         private const string BACKSTAGE_PASSES = "Backstage passes to a TAFKAL80ETC concert";
         private const string SULFURAS = "Sulfuras, Hand of Ragnaros";
+        private const int MAXIMUM_QUALITY = 50;
+        private const int MINIMUM_QUALITY = 0;
+        private const int DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN = 11;
+        private const int TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN = 6;
+        private const int DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN = 0;
 
         private readonly IList<Item> _items;
 
@@ -21,7 +26,7 @@ namespace GildedRoseKata
             {
                 if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASSES)
                 {
-                    if (item.Quality > 0)
+                    if (item.Quality > MINIMUM_QUALITY)
                     {
                         if (item.Name != SULFURAS)
                         {
@@ -31,23 +36,23 @@ namespace GildedRoseKata
                 }
                 else
                 {
-                    if (item.Quality < 50)
+                    if (item.Quality < MAXIMUM_QUALITY)
                     {
                         item.Quality = item.Quality + 1;
 
                         if (item.Name == BACKSTAGE_PASSES)
                         {
-                            if (item.SellIn < 11)
+                            if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
                             {
-                                if (item.Quality < 50)
+                                if (item.Quality < MAXIMUM_QUALITY)
                                 {
                                     item.Quality = item.Quality + 1;
                                 }
                             }
 
-                            if (item.SellIn < 6)
+                            if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
                             {
-                                if (item.Quality < 50)
+                                if (item.Quality < MAXIMUM_QUALITY)
                                 {
                                     item.Quality = item.Quality + 1;
                                 }
@@ -61,13 +66,13 @@ namespace GildedRoseKata
                     item.SellIn = item.SellIn - 1;
                 }
 
-                if (item.SellIn < 0)
+                if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
                 {
                     if (item.Name != AGED_BRIE)
                     {
                         if (item.Name != BACKSTAGE_PASSES)
                         {
-                            if (item.Quality > 0)
+                            if (item.Quality > MINIMUM_QUALITY)
                             {
                                 if (item.Name != SULFURAS)
                                 {
@@ -82,7 +87,7 @@ namespace GildedRoseKata
                     }
                     else
                     {
-                        if (item.Quality < 50)
+                        if (item.Quality < MAXIMUM_QUALITY)
                         {
                             item.Quality = item.Quality + 1;
                         }
