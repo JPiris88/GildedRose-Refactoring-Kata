@@ -24,17 +24,7 @@ namespace GildedRoseKata
         {
             foreach (var item in _items)
             {
-                if (item.Name != AGED_BRIE && item.Name != BACKSTAGE_PASSES)
-                {
-                    if (item.Quality > MINIMUM_QUALITY)
-                    {
-                        if (item.Name != SULFURAS)
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-                }
-                else
+                if (item.Name == AGED_BRIE || item.Name == BACKSTAGE_PASSES)
                 {
                     if (item.Quality < MAXIMUM_QUALITY)
                     {
@@ -60,36 +50,46 @@ namespace GildedRoseKata
                         }
                     }
                 }
+                else
+                {
+                    if (item.Quality > MINIMUM_QUALITY)
+                    {
+                        if (item.Name != SULFURAS)
+                        {
+                            item.Quality = item.Quality - 1;
+                        }
+                    }
+                }
 
                 if (item.Name != SULFURAS)
                 {
                     item.SellIn = item.SellIn - 1;
                 }
 
-                if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+                if (item.SellIn >= DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+                    continue;
+
+                if (item.Name == AGED_BRIE)
                 {
-                    if (item.Name != AGED_BRIE)
+                    if (item.Quality < MAXIMUM_QUALITY)
                     {
-                        if (item.Name != BACKSTAGE_PASSES)
-                        {
-                            if (item.Quality > MINIMUM_QUALITY)
-                            {
-                                if (item.Name != SULFURAS)
-                                {
-                                    item.Quality = item.Quality - 1;
-                                }
-                            }
-                        }
-                        else
-                        {
-                            item.Quality = item.Quality - item.Quality;
-                        }
+                        item.Quality = item.Quality + 1;
+                    }
+                }
+                else
+                {
+                    if (item.Name == BACKSTAGE_PASSES)
+                    {
+                        item.Quality = item.Quality - item.Quality;
                     }
                     else
                     {
-                        if (item.Quality < MAXIMUM_QUALITY)
+                        if (item.Quality > MINIMUM_QUALITY)
                         {
-                            item.Quality = item.Quality + 1;
+                            if (item.Name != SULFURAS)
+                            {
+                                item.Quality = item.Quality - 1;
+                            }
                         }
                     }
                 }
