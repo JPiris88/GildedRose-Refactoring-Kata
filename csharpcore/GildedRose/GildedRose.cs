@@ -26,32 +26,20 @@ namespace GildedRoseKata
             {
                 if (item.Name == AGED_BRIE)
                 {
-                    if (item.Quality < MAXIMUM_QUALITY)
-                    {
-                        item.Quality++;
-                    }
+                    IncreaseQuality(item);
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
-                    if (item.Quality < MAXIMUM_QUALITY)
-                    {
-                        item.Quality++;
-                    }
+                    IncreaseQuality(item);
 
                     if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
                     {
-                        if (item.Quality < MAXIMUM_QUALITY)
-                        {
-                            item.Quality++;
-                        }
+                        IncreaseQuality(item);
                     }
 
                     if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
                     {
-                        if (item.Quality < MAXIMUM_QUALITY)
-                        {
-                            item.Quality++;
-                        }
+                        IncreaseQuality(item);
                     }
                 }
                 else if (item.Name == SULFURAS)
@@ -73,10 +61,7 @@ namespace GildedRoseKata
 
                 if (item.Name == AGED_BRIE)
                 {
-                    if (item.Quality < MAXIMUM_QUALITY)
-                    {
-                        item.Quality++;
-                    }
+                    IncreaseQuality(item);
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
@@ -90,6 +75,14 @@ namespace GildedRoseKata
                 {
                     item.Quality--;
                 }
+            }
+        }
+
+        private static void IncreaseQuality(Item item)
+        {
+            if (item.Quality < MAXIMUM_QUALITY)
+            {
+                item.Quality++;
             }
         }
     }
