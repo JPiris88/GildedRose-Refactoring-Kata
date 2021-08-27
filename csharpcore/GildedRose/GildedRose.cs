@@ -27,6 +27,7 @@ namespace GildedRoseKata
                 if (item.Name == AGED_BRIE)
                 {
                     IncreaseQuality(item);
+                    DecreaseSellIn(item);
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
@@ -41,6 +42,8 @@ namespace GildedRoseKata
                     {
                         IncreaseQuality(item);
                     }
+
+                    DecreaseSellIn(item);
                 }
                 else if (item.Name == SULFURAS)
                 {
@@ -49,10 +52,6 @@ namespace GildedRoseKata
                 else
                 {
                     DecreaseQuality(item);
-                }
-
-                if (item.Name != SULFURAS)
-                {
                     DecreaseSellIn(item);
                 }
 
