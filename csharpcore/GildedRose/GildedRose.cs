@@ -80,7 +80,7 @@ namespace GildedRoseKata
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
-                    item.Quality -= item.Quality;
+                    item.Quality = 0;
                 }
                 else if (item.Name == SULFURAS)
                 {
