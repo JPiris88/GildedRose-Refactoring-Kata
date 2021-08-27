@@ -54,12 +54,13 @@ namespace GildedRoseKata
                         }
                     }
                 }
+                else if (item.Name == SULFURAS)
+                {
+
+                }
                 else if (item.Quality > MINIMUM_QUALITY)
                 {
-                    if (item.Name != SULFURAS)
-                    {
-                        item.Quality--;
-                    }
+                    item.Quality--;
                 }
 
                 if (item.Name != SULFURAS)
@@ -81,12 +82,13 @@ namespace GildedRoseKata
                 {
                     item.Quality -= item.Quality;
                 }
+                else if (item.Name == SULFURAS)
+                {
+
+                }
                 else if (item.Quality > MINIMUM_QUALITY)
                 {
-                    if (item.Name != SULFURAS)
-                    {
-                        item.Quality--;
-                    }
+                    item.Quality--;
                 }
             }
         }
