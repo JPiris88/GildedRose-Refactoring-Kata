@@ -53,7 +53,7 @@ namespace GildedRoseKata
 
                 if (item.Name != SULFURAS)
                 {
-                    item.SellIn--;
+                    DecreaseSellIn(item);
                 }
 
                 if (item.SellIn >= DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
@@ -76,6 +76,11 @@ namespace GildedRoseKata
                     DecreaseQuality(item);
                 }
             }
+        }
+
+        private void DecreaseSellIn(Item item)
+        {
+            item.SellIn--;
         }
 
         private void DecreaseQuality(Item item)
