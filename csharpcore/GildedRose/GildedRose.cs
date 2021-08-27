@@ -36,21 +36,21 @@ namespace GildedRoseKata
                     if (item.Quality < MAXIMUM_QUALITY)
                     {
                         item.Quality++;
+                    }
 
-                        if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                    if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                    {
+                        if (item.Quality < MAXIMUM_QUALITY)
                         {
-                            if (item.Quality < MAXIMUM_QUALITY)
-                            {
-                                item.Quality++;
-                            }
+                            item.Quality++;
                         }
+                    }
 
-                        if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                    if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                    {
+                        if (item.Quality < MAXIMUM_QUALITY)
                         {
-                            if (item.Quality < MAXIMUM_QUALITY)
-                            {
-                                item.Quality++;
-                            }
+                            item.Quality++;
                         }
                     }
                 }
