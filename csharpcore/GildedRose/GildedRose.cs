@@ -24,7 +24,33 @@ namespace GildedRoseKata
         {
             foreach (var item in _items)
             {
-                if (item.Name == AGED_BRIE || item.Name == BACKSTAGE_PASSES)
+                if (item.Name == AGED_BRIE)
+                {
+                    if (item.Quality < MAXIMUM_QUALITY)
+                    {
+                        item.Quality = item.Quality + 1;
+
+                        if (item.Name == BACKSTAGE_PASSES)
+                        {
+                            if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                            {
+                                if (item.Quality < MAXIMUM_QUALITY)
+                                {
+                                    item.Quality = item.Quality + 1;
+                                }
+                            }
+
+                            if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                            {
+                                if (item.Quality < MAXIMUM_QUALITY)
+                                {
+                                    item.Quality = item.Quality + 1;
+                                }
+                            }
+                        }
+                    }
+                }
+                else if (item.Name == BACKSTAGE_PASSES)
                 {
                     if (item.Quality < MAXIMUM_QUALITY)
                     {
