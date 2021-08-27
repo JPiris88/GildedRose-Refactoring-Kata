@@ -46,9 +46,9 @@ namespace GildedRoseKata
                 {
 
                 }
-                else if (item.Quality > MINIMUM_QUALITY)
+                else
                 {
-                    item.Quality--;
+                    DecreaseQuality(item);
                 }
 
                 if (item.Name != SULFURAS)
@@ -71,14 +71,22 @@ namespace GildedRoseKata
                 {
 
                 }
-                else if (item.Quality > MINIMUM_QUALITY)
+                else
                 {
-                    item.Quality--;
+                    DecreaseQuality(item);
                 }
             }
         }
 
-        private static void IncreaseQuality(Item item)
+        private void DecreaseQuality(Item item)
+        {
+            if (item.Quality > MINIMUM_QUALITY)
+            {
+                item.Quality--;
+            }
+        }
+
+        private void IncreaseQuality(Item item)
         {
             if (item.Quality < MAXIMUM_QUALITY)
             {
