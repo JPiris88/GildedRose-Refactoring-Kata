@@ -65,7 +65,7 @@ namespace GildedRoseKata
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
-                    item.Quality = 0;
+                    DropQualityToZero(item);
                 }
                 else if (item.Name == SULFURAS)
                 {
@@ -76,6 +76,11 @@ namespace GildedRoseKata
                     DecreaseQuality(item);
                 }
             }
+        }
+
+        private void DropQualityToZero(Item item)
+        {
+            item.Quality = 0;
         }
 
         private void DecreaseSellIn(Item item)
