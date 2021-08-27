@@ -29,25 +29,6 @@ namespace GildedRoseKata
                     if (item.Quality < MAXIMUM_QUALITY)
                     {
                         item.Quality = item.Quality + 1;
-
-                        if (item.Name == BACKSTAGE_PASSES)
-                        {
-                            if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
-                            {
-                                if (item.Quality < MAXIMUM_QUALITY)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
-                            }
-
-                            if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
-                            {
-                                if (item.Quality < MAXIMUM_QUALITY)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
-                            }
-                        }
                     }
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
@@ -56,22 +37,19 @@ namespace GildedRoseKata
                     {
                         item.Quality = item.Quality + 1;
 
-                        if (item.Name == BACKSTAGE_PASSES)
+                        if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
                         {
-                            if (item.SellIn < DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                            if (item.Quality < MAXIMUM_QUALITY)
                             {
-                                if (item.Quality < MAXIMUM_QUALITY)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
+                        }
 
-                            if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                        if (item.SellIn < TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+                        {
+                            if (item.Quality < MAXIMUM_QUALITY)
                             {
-                                if (item.Quality < MAXIMUM_QUALITY)
-                                {
-                                    item.Quality = item.Quality + 1;
-                                }
+                                item.Quality = item.Quality + 1;
                             }
                         }
                     }
