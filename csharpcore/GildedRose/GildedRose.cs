@@ -32,7 +32,6 @@ namespace GildedRoseKata
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
                     IncreaseBackstagePassesQuality(item);
-
                     DecreaseSellIn(item);
 
                     if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
@@ -47,13 +46,18 @@ namespace GildedRoseKata
                 else
                 {
                     DecreaseSellIn(item);
-                    DecreaseQuality(item);
-
-                    if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
-                    {
-                        DecreaseQuality(item);
-                    }
+                    DecreaseDefaultItemQuality(item);
                 }
+            }
+        }
+
+        private void DecreaseDefaultItemQuality(Item item)
+        {
+            DecreaseQuality(item);
+
+            if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            {
+                DecreaseQuality(item);
             }
         }
 
