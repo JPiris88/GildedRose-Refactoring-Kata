@@ -27,12 +27,7 @@ namespace GildedRoseKata
                 if (item.Name == AGED_BRIE)
                 {
                     DecreaseSellIn(item);
-                    IncreaseQuality(item);
-
-                    if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
-                    {
-                        IncreaseQuality(item);
-                    }
+                    IncreaseAgedBrieQuality(item);
                 }
                 else if (item.Name == BACKSTAGE_PASSES)
                 {
@@ -69,6 +64,16 @@ namespace GildedRoseKata
                         DecreaseQuality(item);
                     }
                 }
+            }
+        }
+
+        private void IncreaseAgedBrieQuality(Item item)
+        {
+            IncreaseQuality(item);
+
+            if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            {
+                IncreaseQuality(item);
             }
         }
 
