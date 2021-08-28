@@ -33,11 +33,7 @@ namespace GildedRoseKata
                 {
                     IncreaseBackstagePassesQuality(item);
                     DecreaseSellIn(item);
-
-                    if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
-                    {
-                        DropQualityToZero(item);
-                    }
+                    DropBackstagePassesQualityToZero(item);
                 }
                 else if (item.Name == SULFURAS)
                 {
@@ -48,6 +44,14 @@ namespace GildedRoseKata
                     DecreaseSellIn(item);
                     DecreaseDefaultItemQuality(item);
                 }
+            }
+        }
+
+        private void DropBackstagePassesQualityToZero(Item item)
+        {
+            if (item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            {
+                DropQualityToZero(item);
             }
         }
 
