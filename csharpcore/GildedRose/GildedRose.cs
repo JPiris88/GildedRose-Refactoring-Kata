@@ -24,25 +24,23 @@ namespace GildedRoseKata
         {
             foreach (var item in _items)
             {
-                if (item.Name == AGED_BRIE)
+                switch (item.Name)
                 {
-                    DecreaseSellIn(item);
-                    IncreaseAgedBrieQuality(item);
-                }
-                else if (item.Name == BACKSTAGE_PASSES)
-                {
-                    IncreaseBackstagePassesQuality(item);
-                    DecreaseSellIn(item);
-                    DropBackstagePassesQualityToZero(item);
-                }
-                else if (item.Name == SULFURAS)
-                {
-
-                }
-                else
-                {
-                    DecreaseSellIn(item);
-                    DecreaseDefaultItemQuality(item);
+                    case AGED_BRIE:
+                        DecreaseSellIn(item);
+                        IncreaseAgedBrieQuality(item);
+                        break;
+                    case BACKSTAGE_PASSES:
+                        IncreaseBackstagePassesQuality(item);
+                        DecreaseSellIn(item);
+                        DropBackstagePassesQualityToZero(item);
+                        break;
+                    case SULFURAS:
+                        break;
+                    default:
+                        DecreaseSellIn(item);
+                        DecreaseDefaultItemQuality(item);
+                        break;
                 }
             }
         }
