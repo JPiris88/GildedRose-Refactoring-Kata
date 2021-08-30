@@ -9,6 +9,7 @@
         private const int MINIMUM_QUALITY = 0;
         private const int DOUBLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN = 11;
         private const int TRIPLE_BACKSTAGE_PASSES_QUALITY_WHEN_SELL_IN_LOWER_THAN = 6;
+        private const int INCREASE_AGED_BRIE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN = 0;
         private const int DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN = 0;
 
         private readonly Item _item;
@@ -77,7 +78,7 @@
         {
             IncreaseQuality();
 
-            if (_item.SellIn < DECREASE_DEFAULT_ITEM_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            if (_item.SellIn < INCREASE_AGED_BRIE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
             {
                 IncreaseQuality();
             }
