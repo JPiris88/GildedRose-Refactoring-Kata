@@ -6,4 +6,8 @@
     <StartupObject>GildedRoseKata.Program</StartupObject>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Remove="ItemFactory.cs" />
+  </ItemGroup>
+
 </Project>

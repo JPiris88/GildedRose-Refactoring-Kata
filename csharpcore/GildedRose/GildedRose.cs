@@ -5,7 +5,7 @@ namespace GildedRoseKata
 {
     public class GildedRose
     {
-        public void UpdateQuality(IEnumerable<UpdatableItem> items)
+        public void UpdateQuality(IEnumerable<Item> items)
         {
             items.ToList().ForEach(x => x.Update());
         }

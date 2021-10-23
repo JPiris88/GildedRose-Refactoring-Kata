@@ -2,9 +2,9 @@
 
 namespace GildedRose
 {
-    public class Sulfuras : UpdatableItem
+    public class Sulfuras : Item
     {
-        public Sulfuras(Item item) : base(item)
+        public Sulfuras(string name, int sellIn, int quality) : base(name, sellIn, quality)
         {
         }
 

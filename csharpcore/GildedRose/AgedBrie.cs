@@ -2,11 +2,11 @@
 
 namespace GildedRose
 {
-    public class AgedBrie : UpdatableItem
+    public class AgedBrie : Item
     {
         private const int INCREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN = 0;
 
-        public AgedBrie(Item item) : base(item)
+        public AgedBrie(string name, int sellIn, int quality) : base(name, sellIn, quality)
         {
         }
 
@@ -16,7 +16,7 @@ namespace GildedRose
 
             IncreaseQuality();
 
-            if (SellIn() < INCREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            if (SellIn < INCREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
             {
                 IncreaseQuality();
             }
