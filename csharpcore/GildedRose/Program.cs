@@ -11,31 +11,28 @@ namespace GildedRoseKata
             Console.WriteLine("OMGHAI!");
 
             IList<Item> Items = new List<Item>{
-                new StandardItem (name: "+5 Dexterity Vest", sellIn: 10, quality: 20),
-                new AgedBrie (name: "Aged Brie", sellIn: 2, quality: 0),
-                new StandardItem (name: "Elixir of the Mongoose", sellIn: 5, quality: 7),
-                new Sulfuras (name: "Sulfuras, Hand of Ragnaros", sellIn: 0, quality: 80),
-                new Sulfuras (name: "Sulfuras, Hand of Ragnaros", sellIn: -1, quality: 80),
+                new StandardItem (name: new ItemName("+5 Dexterity Vest"), sellIn: new ItemSellIn(10), quality: new ItemQuality(20)),
+                new AgedBrie (sellIn: new ItemSellIn(2), quality: new ItemQuality(0)),
+                new StandardItem (name: new ItemName("Elixir of the Mongoose"), sellIn: new ItemSellIn(5), quality: new ItemQuality(7)),
+                new Sulfuras (sellIn: new ItemSellIn(0), quality: new ItemQuality(80)),
+                new Sulfuras (sellIn: new ItemSellIn(-1), quality: new ItemQuality(80)),
                 new BackstagePasses
                 (
-                    name: "Backstage passes to a TAFKAL80ETC concert",
-                    sellIn: 15,
-                    quality: 20
+                    sellIn: new ItemSellIn( 15),
+                    quality: new ItemQuality( 20)
                 ),
                 new BackstagePasses
                 (
-                    name: "Backstage passes to a TAFKAL80ETC concert",
-                    sellIn: 10,
-                    quality: 49
+                    sellIn: new ItemSellIn(10),
+                    quality: new ItemQuality(49)
                 ),
                 new BackstagePasses
                 (
-                    name: "Backstage passes to a TAFKAL80ETC concert",
-                    sellIn: 5,
-                    quality: 49
+                    sellIn: new ItemSellIn(5),
+                    quality: new ItemQuality(49)
                 ),
                 // this conjured item does not work properly yet
-                new StandardItem (name: "Conjured Mana Cake", sellIn: 3, quality: 6)
+                new StandardItem (name: new ItemName("Conjured Mana Cake"), sellIn: new ItemSellIn(3), quality: new ItemQuality(6))
             };
 
             var app = new GildedRose();
@@ -47,7 +44,7 @@ namespace GildedRoseKata
                 Console.WriteLine("name, sellIn, quality");
                 for (var j = 0; j < Items.Count; j++)
                 {
-                    System.Console.WriteLine(Items[j].Name + ", " + Items[j].SellIn + ", " + Items[j].Quality);
+                    System.Console.WriteLine(Items[j].Name.Value + ", " + Items[j].SellIn.Value + ", " + Items[j].Quality.Value);
                 }
                 Console.WriteLine("");
                 app.UpdateQuality(Items);

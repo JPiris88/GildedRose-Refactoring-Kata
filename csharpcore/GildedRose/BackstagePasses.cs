@@ -8,7 +8,7 @@ namespace GildedRose
         private const int TRIPLE_QUALITY_WHEN_SELL_IN_LOWER_THAN = 6;
         private const int DROP_QUALITY_TO_ZERO_WHEN_SELL_IN_LOWER_THAN = 0;
 
-        public BackstagePasses(string name, int sellIn, int quality) : base(name, sellIn, quality)
+        public BackstagePasses(ItemSellIn sellIn, ItemQuality quality) : base(new ItemName("Backstage passes to a TAFKAL80ETC concert"), sellIn, quality)
         {
         }
 
@@ -16,19 +16,19 @@ namespace GildedRose
         {
             IncreaseQuality();
 
-            if (SellIn < DOUBLE_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+            if (SellIn.IsLowerThan(DOUBLE_QUALITY_WHEN_SELL_IN_LOWER_THAN))
             {
                 IncreaseQuality();
             }
 
-            if (SellIn < TRIPLE_QUALITY_WHEN_SELL_IN_LOWER_THAN)
+            if (SellIn.IsLowerThan(TRIPLE_QUALITY_WHEN_SELL_IN_LOWER_THAN))
             {
                 IncreaseQuality();
             }
 
             DecreaseSellIn();
 
-            if (SellIn < DROP_QUALITY_TO_ZERO_WHEN_SELL_IN_LOWER_THAN)
+            if (SellIn.IsLowerThan(DROP_QUALITY_TO_ZERO_WHEN_SELL_IN_LOWER_THAN))
             {
                 DropQualityToZero();
             }

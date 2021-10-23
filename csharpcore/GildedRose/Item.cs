@@ -1,15 +1,14 @@
-﻿namespace GildedRoseKata
+﻿using GildedRose;
+
+namespace GildedRoseKata
 {
     public abstract class Item
     {
-        private const int MAXIMUM_QUALITY = 50;
-        private const int MINIMUM_QUALITY = 0;
+        public ItemName Name { get; private set; }
+        public ItemQuality Quality { get; private set; }
+        public ItemSellIn SellIn { get; private set; }
 
-        public string Name { get; private set; }
-        public int Quality { get; private set; }
-        public int SellIn { get; private set; }
-
-        public Item(string name, int sellIn, int quality)
+        public Item(ItemName name, ItemSellIn sellIn, ItemQuality quality)
         {
             Name = name;
             Quality = quality;
@@ -20,28 +19,22 @@
 
         protected void DropQualityToZero()
         {
-            Quality = 0;
+            Quality = Quality.DropToZero();
         }
 
         protected void DecreaseSellIn()
         {
-            SellIn--;
+            SellIn = SellIn.Decrease();
         }
 
         protected void DecreaseQuality()
         {
-            if (Quality > MINIMUM_QUALITY)
-            {
-                Quality--;
-            }
+            Quality = Quality.Decrease();
         }
 
         protected void IncreaseQuality()
         {
-            if (Quality < MAXIMUM_QUALITY)
-            {
-                Quality++;
-            }
+            Quality = Quality.Increase();
         }
     }
 }

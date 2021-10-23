@@ -6,7 +6,7 @@ namespace GildedRose
     {
         private const int INCREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN = 0;
 
-        public AgedBrie(string name, int sellIn, int quality) : base(name, sellIn, quality)
+        public AgedBrie(ItemSellIn sellIn, ItemQuality quality) : base(new ItemName("Aged Brie"), sellIn, quality)
         {
         }
 
@@ -16,7 +16,7 @@ namespace GildedRose
 
             IncreaseQuality();
 
-            if (SellIn < INCREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            if (SellIn.IsLowerThan(INCREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN))
             {
                 IncreaseQuality();
             }

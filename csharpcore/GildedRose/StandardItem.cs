@@ -6,7 +6,7 @@ namespace GildedRose
     {
         private const int DECREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN = 0;
 
-        public StandardItem(string name, int sellIn, int quality) : base(name, sellIn, quality)
+        public StandardItem(ItemName name, ItemSellIn sellIn, ItemQuality quality) : base(name, sellIn, quality)
         {
         }
 
@@ -16,7 +16,7 @@ namespace GildedRose
 
             DecreaseQuality();
 
-            if (SellIn < DECREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN)
+            if (SellIn.IsLowerThan(DECREASE_QUALITY_BY_TWO_WHEN_SELL_IN_LOWER_THAN))
             {
                 DecreaseQuality();
             }
