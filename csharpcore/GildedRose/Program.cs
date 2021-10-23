@@ -32,7 +32,7 @@ namespace GildedRoseKata
                     quality: new ItemQuality(49)
                 ),
                 // this conjured item does not work properly yet
-                new StandardItem (name: new ItemName("Conjured Mana Cake"), sellIn: new ItemSellIn(3), quality: new ItemQuality(6))
+                new Conjured (sellIn: new ItemSellIn(3), quality: new ItemQuality(6))
             };
 
             var app = new GildedRose();

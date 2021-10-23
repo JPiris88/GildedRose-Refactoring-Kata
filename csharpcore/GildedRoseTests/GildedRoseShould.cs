@@ -1,4 +1,5 @@
 ﻿using GildedRose;
+using GildedRoseKata;
 using Xunit;
 
 namespace GildedRoseTests
@@ -12,7 +13,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(3, item.Quality.Value);
         }
@@ -24,7 +25,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(0, item.Quality.Value);
         }
@@ -36,7 +37,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(1, item.Quality.Value);
         }
@@ -48,7 +49,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(50, item.Quality.Value);
         }
@@ -60,7 +61,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(5, item.Quality.Value);
             Assert.Equal(1, item.SellIn.Value);
@@ -75,7 +76,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(7, item.Quality.Value);
         }
@@ -89,7 +90,7 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(8, item.Quality.Value);
         }
@@ -101,9 +102,31 @@ namespace GildedRoseTests
 
             var gildedRose = new GildedRoseKata.GildedRose();
 
-            gildedRose.UpdateQuality(new[] { item });
+            gildedRose.UpdateQuality(new Item[] { item });
 
             Assert.Equal(0, item.Quality.Value);
+        }
+
+        [Theory]
+        [InlineData(0, 10)]
+        [InlineData(20, 40)]
+        [InlineData(0, 1)]
+        public void decrease_conjured_quality_twice_as_fast_as_standard_items(int sellIn, int quality)
+        {
+            var standardItem = new StandardItem(name: new ItemName("A product"), sellIn: new ItemSellIn(sellIn), quality: new ItemQuality(quality));
+            var conjured = new Conjured(sellIn: new ItemSellIn(sellIn), quality: new ItemQuality(quality));
+
+            var gildedRose = new GildedRoseKata.GildedRose();
+
+            gildedRose.UpdateQuality(new Item[] { conjured, standardItem });
+
+            int qualityDifference = quality - standardItem.Quality.Value;
+
+            int expected = quality - (qualityDifference * 2);
+
+            expected = expected < 0 ? 0 : expected;
+
+            Assert.Equal(expected, conjured.Quality.Value);
         }
     }
 }
